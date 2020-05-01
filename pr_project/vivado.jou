@@ -1,0 +1,143 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:36:41 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Apr 30 23:07:12 2020
+# Process ID: 5673
+# Current directory: /home/ict/pr_led/pr_project
+# Command line: vivado -mode tcl
+# Log file: /home/ict/pr_led/pr_project/vivado.log
+# Journal file: /home/ict/pr_led/pr_project/vivado.jou
+#-----------------------------------------------------------
+ls
+vim setup_prj.tcl
+vim setup_prj.tcl
+set project_name pr_led
+set device xczu2eg-sfva625-1-e
+set board interwiser:none:part0:2.0
+ls
+create_project ${project_name} -force -dir "./${project_name}" -part ${device}
+ls
+set_property board_part ${board} [current_project]
+add_files -norecurse -fileset sources_1 ./Sources/hdl/shift_left
+add_files -norecurse -fileset sources_1 ./Sources/hdl/top
+l
+ls
+ls pr_led
+ls Sources
+ls Sources/hdl
+ls Sources/hdl/top
+vim Sources/hdl/top/top.v
+ls Sources/hdl
+ls Sources/hdl/top
+rm -rf  Sources/hdl/top/clocks.v
+ls Sources/hdl/top
+ls Sources/hdl/top
+pwd
+ls
+ls pr_led
+open_project /home/ict/pr_led/pr_project/pr_led/pr_led.xpr
+synth_design -top shift -mode out_of_context
+clear
+create_project ${project_name} -force -dir "./${project_name}" -part ${device}
+close_project /home/ict/pr_led/pr_project/pr_led/pr_led.xpr
+close_project -help
+close_project
+create_project ${project_name} -force -dir "./${project_name}" -part ${device}
+set_property board_part ${board} [current_project]
+add_files -norecurse -fileset sources_1 ./Sources/hdl/shift_left
+add_files -norecurse -fileset sources_1 ./Sources/hdl/top
+open_project /home/ict/pr_led/pr_project/pr_led/pr_led.xpr
+close_project
+open_project /home/ict/pr_led/pr_project/pr_led/pr_led.xpr
+synth_design -top shift -mode out_of_context
+write_checkpoint /home/ict/pr_led/pr_project/dcp/synth-rp.dcp -force
+write_checkpoint /home/ict/pr_led/pr_project/led/synth-rp.dcp -force
+ls
+ls led
+synth_design -top top
+write_checkpoint /home/ict/pr_led/pr_project/led/synth-static.dcp -force
+ls led
+set_property HD.RECONFIGURABLE true [get_cells -hierarchical inst_shift_low]
+set_property HD.RECONFIGURABLE true [get_cells -hierarchical inst_shift_high]
+read_checkpoint -cell [get_cells -hierarchical inst_shift_low] /home/ict/pr_led/pr_project/led/synth-rp.dcp
+create_pblock pblock_inst_shift_low
+resize_pblock [get_pblocks pblock_inst_shift_low] -add {SLICE_X2Y65:SLICE_X16Y112}
+resize_pblock [get_pblocks pblock_inst_shift_low] -add {DSP48E2_X0Y26:DSP48E2_X0Y43}
+resize_pblock [get_pblocks pblock_inst_shift_low] -add {RAMB18_X0Y26:RAMB18_X1Y43}
+resize_pblock [get_pblocks pblock_inst_shift_low] -add {RAMB36_X0Y13:RAMB36_X1Y21}
+set_property SNAPPING_MODE ON [get_pblocks pblock_inst_shift_low]
+add_cells_to_pblock pblock_inst_shift_low [get_cells -hierarchical inst_shift_low] -clear_locs
+create_pblock pblock_inst_shift_high
+resize_pblock [get_pblocks pblock_inst_shift_high] -add {SLICE_X2Y124:SLICE_X13Y165}
+resize_pblock [get_pblocks pblock_inst_shift_high] -add {DSP48E2_X0Y50:DSP48E2_X0Y65}
+resize_pblock [get_pblocks pblock_inst_shift_high] -add {RAMB18_X0Y50:RAMB18_X1Y65}
+resize_pblock [get_pblocks pblock_inst_shift_high] -add {RAMB36_X0Y25:RAMB36_X1Y32}
+set_property SNAPPING_MODE ON [get_pblocks pblock_inst_shift_high]
+add_cells_to_pblock pblock_inst_shift_high [get_cells -hierarchical inst_shift_high] -clear_locs
+opt_design
+set_property HD.RECONFIGURABLE true [get_cells -hierarchical inst_shift_high]
+opt_design
+read_checkpoint -cell [get_cells -hierarchical inst_shift_high] /home/ict/pr_led/pr_project/led/synth-rp.dcp
+opt_design
+place_design
+phys_opt_design
+route_design
+write_checkpoint /home/ict/pr_led/pr_project/led/route-full.dcp -force
+write_checkpoint -cell [get_cells -hierarchical inst_shift_low] /home/ict/pr_led/pr_project/led/route-rp-inst_shift_low.dcp -force
+write_checkpoint -cell [get_cells -hierarchical inst_shift_high] /home/ict/pr_led/pr_project/led/route-rp-inst_shift_high.dcp -force
+write_bitstream -no_partial_bitfile /home/ict/pr_led/hw_plat/system.bit -force
+add_files -norecurse -fileset sources_1 /home/ict/pr_led/pr_project/Sources/xdc/
+write_bitstream -no_partial_bitfile /home/ict/pr_led/hw_plat/system.bit -force
+opt_design
+place_design
+phys_opt_design
+route_design
+write_checkpoint /home/ict/pr_led/pr_project/led/route-full.dcp -force
+# role
+write_checkpoint -cell [get_cells -hierarchical inst_shift_low] /home/ict/pr_led/pr_project/led/route-rp-inst_shift_low.dcp -force
+write_checkpoint -cell [get_cells -hierarchical inst_shift_high] /home/ict/pr_led/pr_project/led/route-rp-inst_shift_high.dcp -force
+# partial bitstream
+write_bitstream -no_partial_bitfile /home/ict/pr_led/hw_plat/system.bit -force
+close project
+close_project
+ls
+source tcl/full.tcl
+ls
+ls /home/ict/pr_led/pr_project/Sources/xdc/pblocks_interwiser.xdc
+ls /home/ict/pr_led/pr_project/Sources/xdc/
+vim tcl/full.tcl
+clear
+source tcl/full.tcl
+close_project
+clear
+source tcl/full.tcl
+close_project
+ls 
+rm -rf pr_led
+clear
+source tcl/full.tcl
+close_project
+clear
+source tcl/full.tcl
+close_project -delete
+source tcl/full.tcl
+vim tcl/full.tcl
+clear
+source tcl/full.tcl
+close_project 
+clear
+source tcl/full.tcl
+ls
+ls ../
+ls ../hw_plat
+ls
+ls led
+clear
+ls
+source tcl/rp.tcl
+close_project
+source tcl/rp.tcl
+ls
+ls led
+ls ../hw_plat
